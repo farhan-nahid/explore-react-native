@@ -1,7 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const [name, setName] = useState(false);
+
   return (
     <View style={styles.container}>
       <View>
@@ -9,9 +12,12 @@ export default function App() {
       </View>
       <View style={styles.body}>
         <Text>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet vel dignissimos ipsum quidem id ducimus quam
-          sapiente ex eos facilis! Error, quas illum sunt voluptatibus itaque possimus voluptates ipsum. Nobis.
+          My Name is <Text style={styles.myName}>{name ? 'Farhan' : 'Nahid'}</Text>{' '}
         </Text>
+      </View>
+
+      <View style={styles.mainButton}>
+        <Button title='Update Name' onPress={() => setName((prevState) => !prevState)} />
       </View>
       <StatusBar style='auto' />
     </View>
@@ -30,12 +36,19 @@ const styles = StyleSheet.create({
   heading: {
     fontWeight: 'bold',
     backgroundColor: 'pink',
-    padding: 20,
+    padding: 10,
     borderRadius: 10,
     fontSize: 16,
   },
-
   body: {
+    marginTop: 20,
+  },
+  myName: {
+    color: 'teal',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  mainButton: {
     marginTop: 20,
   },
 });
